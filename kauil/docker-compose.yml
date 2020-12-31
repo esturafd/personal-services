@@ -28,7 +28,7 @@ networks:
   outnet:
     driver: macvlan
     driver_opts:
-      parent: enp4s0
+      parent: ${NETINTERFACE}
     ipam:
       config:
         - subnet: '192.168.1.0/24'
