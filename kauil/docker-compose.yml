@@ -24,6 +24,19 @@ services:
       - NET_ADMIN
     restart: unless-stopped
 
+  nfs-server:
+    image: fschuindt/docker-nfs-server:2.2.1
+    volumes:
+      - '${SHARE}:/nfs'
+      - '/lib/modules:/lib/modules:ro'
+    environment:
+      NFS_EXPORT_0: '/nfs *(fsid=0,rw,sync,no_root_squash,no_subtree_check)'
+    cap_add:
+      - SYS_ADMIN
+      - SYS_MODULE
+    ports:
+      - 2049:2049
+
 networks:
   outnet:
     driver: macvlan
