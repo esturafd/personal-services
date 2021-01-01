@@ -36,6 +36,16 @@ services:
       - SYS_MODULE
     ports:
       - 2049:2049
+    restart: unless-stopped
+  
+  bitlbee:
+    image: vanityshed/bitlbee-alpine-plugins:stable
+    volumes:
+      - '${DATA_SRV}/bitlbee:/bitlbee-data'
+      - '/usr/share/zoneinfo/America/Guatemala:/etc/localtime:ro'
+    ports:
+      - 6667:6667
+    restart: unless-stopped
 
 networks:
   outnet:
