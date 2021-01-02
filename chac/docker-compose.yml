@@ -23,6 +23,15 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
+  
+  duckdns:
+    image: linuxserver/duckdns:latest
+    environment:
+      TZ: 'America/Guatemala'
+      SUBDOMAINS: ${DUCK_DOMAIN}
+      TOKEN: ${DUCK_TOKEN}
+      LOG_FILE: false
+    restart: unless-stopped
 
 networks:
   outnet:
