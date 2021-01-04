@@ -39,7 +39,7 @@ services:
     restart: unless-stopped
   
   bitlbee:
-    image: vanityshed/bitlbee-alpine-plugins:stable
+    image: esturafd/bitlbee-alpine-plugins:latest
     volumes:
       - '${DATA_SRV}/bitlbee:/bitlbee-data'
       - '/usr/share/zoneinfo/America/Guatemala:/etc/localtime:ro'
