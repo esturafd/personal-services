@@ -5,7 +5,7 @@ services:
     image: pihole/pihole:latest
     networks:
       outnet:
-        ipv4_address: ${PIHOLE_IP}
+        ipv4_address: '${BASEIP}.2'
     ports:
       - 53/tcp
       - 53/udp
@@ -45,6 +45,19 @@ services:
       - '/usr/share/zoneinfo/America/Guatemala:/etc/localtime:ro'
     ports:
       - 6667:6667
+    restart: unless-stopped
+
+  minidlna:
+    image: vladgh/minidlna:0.5.0
+    networks:
+      outnet:
+        ipv4_address: '${BASEIP}.9'
+    volumes:
+      - '${SHARE}/Video:/media/video'
+      - '${SHARE}/Audio:/media/audio'
+    environment:
+      MINIDLNA_MEDIA_DIR_1: 'V,/media/video'
+      MINIDLNA_MEDIA_DIR_2: 'A,/media/audio'
     restart: unless-stopped
 
 networks:
