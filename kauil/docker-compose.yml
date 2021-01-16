@@ -37,15 +37,6 @@ services:
     ports:
       - 2049:2049
     restart: unless-stopped
-  
-  bitlbee:
-    image: esturafd/bitlbee-alpine-plugins:latest
-    volumes:
-      - '${DATA_SRV}/bitlbee:/bitlbee-data'
-      - '/usr/share/zoneinfo/America/Guatemala:/etc/localtime:ro'
-    ports:
-      - 6667:6667
-    restart: unless-stopped
 
   minidlna:
     image: vladgh/minidlna:0.5.0
