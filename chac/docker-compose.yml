@@ -15,8 +15,8 @@ services:
     environment:
       TZ: 'America/Guatemala'
     volumes:
-      - '${DATA_SRV}/config/:/etc/pihole/'
-      - '${DATA_SRV}/dns/:/etc/dnsmasq.d/'
+      - '${DATA_SRV}/pihole/config/:/etc/pihole/'
+      - '${DATA_SRV}/pihole/dns/:/etc/dnsmasq.d/'
     dns:
       - 127.0.0.1
       - 1.1.1.1
