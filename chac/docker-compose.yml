@@ -24,6 +24,15 @@ services:
       - NET_ADMIN
     restart: unless-stopped
 
+  samba:
+    image: elswork/samba:latest
+    command: ${SAMBA_USERS} ${SAMBA_SHARES}
+    ports:
+      - 445:445
+    volumes:
+      - '${DATA_SRV}/share:/share/data'
+    restart: unless-stopped
+
 networks:
   outnet:
     driver: macvlan
