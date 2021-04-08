@@ -50,6 +50,15 @@ services:
       MINIDLNA_MEDIA_DIR_1: 'V,/media/video'
       MINIDLNA_MEDIA_DIR_2: 'A,/media/audio'
     restart: unless-stopped
+  
+  samba:
+    image: trnape/rpi-samba:e78b6a068911
+    command: '-u "esturafd:trabajo" -s "Trabajo:/share/data:rw:esturafd"'
+    ports:
+      - 445:445
+    volumes:
+      - '${SHARE}/Trabajo:/share/data'
+    restart: unless-stopped
 
 networks:
   outnet:
